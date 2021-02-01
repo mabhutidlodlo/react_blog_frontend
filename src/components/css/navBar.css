@@ -1,0 +1,5 @@
+#basic-nav-dropdown::before, 
+#basic-nav-dropdown::after{
+  display:none !important;
+}
+

@@ -1,0 +1,12 @@
+
+.icons div{
+  padding: 1rem;
+  border: 1px solid #33B0AD;
+  color: rgb(131, 125, 125);
+  text-align: center;
+}
+
+.text{
+  color: rgb(131, 125, 125);
+  margin: 4px;
+}

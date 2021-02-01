@@ -3,6 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import "bootstrap/dist/css/bootstrap.css";
+import $ from 'jquery';
+import 'bootstrap/dist/css/bootstrap.css';
+import "react-toastify/dist/ReactToastify.css";
+
+window.jQuery = $;
+
+require('bootstrap');
 
 ReactDOM.render(
   <React.StrictMode>
