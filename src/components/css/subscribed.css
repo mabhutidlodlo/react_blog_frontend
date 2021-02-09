@@ -1,0 +1,25 @@
+#subscribed_button{
+  border: 0px;
+  background-color: white;
+  color: grey;
+  font-size: 20px;
+}
+
+.recent_articles{
+  border-radius: 4px;
+  border-bottom: 4px solid;
+  border-bottom-style: ridge;
+}
+
+#recent_button{
+  border: 0px;
+  background-color: white;
+  color: grey;
+  font-size: 20px;
+}
+
+.subscribed_articles{
+  border-radius: 4px;
+  border-bottom: 4px solid;
+  border-bottom-style: ridge;
+}

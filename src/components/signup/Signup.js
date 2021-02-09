@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom"; // new import
-import { connect } from "react-redux"; // new import
-import PropTypes from "prop-types"; // new import
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import {
     Container,
@@ -12,7 +12,7 @@ import {
     FormControl
   } from "react-bootstrap";
 
-import { signupNewUser } from "./SignupActions"; // new import
+import { signupNewUser } from "./SignupActions"; 
 import { toast } from "react-toastify";
 
 class SignUP extends Component{
@@ -61,20 +61,20 @@ class SignUP extends Component{
         break
 
       default:
-        
+
        break
-      
-    } 
+
+    }
     this.setState({errors,[name]:value})
   }
 
   validateForm = (errors)=>{
-    
+
     let valid = true;
     Object.values(errors).forEach(
-      
+
       (val) => val.length > 0 && (valid = false)
-      
+
     );
     return valid;
 
@@ -90,7 +90,7 @@ class SignUP extends Component{
         password:this.state.password,
         first_name:this.state.first_name,
         last_name:this.state.last_name
-  
+
       };
       this.props.signupNewUser(userData);
     }
@@ -105,13 +105,13 @@ render(){
   return(
 
     <div className="container" id="container">
-      
+
       <div className="inner.container">
-        
+
         <div className="contents">
         <h3>Sign up</h3>
         <Form>
-          
+
           <Form.Group controlId="usernameId">
           <Form.Label>Username</Form.Label>
             <Form.Control
@@ -122,16 +122,16 @@ render(){
             value={this.state.username}
             onChange={this.onChange}
             required
-            />  
-            {this.state.errors.username.length >0 && 
+            />
+            {this.state.errors.username.length >0 &&
             <span className = "error">{this.state.errors.username}</span>
             }
-        
+
           </Form.Group>
           <Form.Group controlId="passwordId">
-          
+
             <Form.Label>password</Form.Label>
-            <Form.Control   
+            <Form.Control
             isInvalid={this.props.createUser.passwordError}
             type="password"
             name="password"
@@ -139,14 +139,14 @@ render(){
             value={this.password}
             onChange={this.onChange}
             required
-            />     
-            {this.state.errors.password.length >0 && 
+            />
+            {this.state.errors.password.length >0 &&
             <span className = "error">{this.state.errors.password}</span>
             }
-              
+
           </Form.Group>
           <Form.Group controlId="first_nameId">
-                
+
             <Form.Label>First name</Form.Label>
             <Form.Control
             type="text"
@@ -155,13 +155,13 @@ render(){
             value={this.state.first_name}
             onChange={this.onChange}
             />
-            {this.state.errors.first_name.length > 0 && 
+            {this.state.errors.first_name.length > 0 &&
             <span className = "error">{this.state.errors.first_name}</span>
             }
-              
-          </Form.Group>     
+
+          </Form.Group>
           <Form.Group controlId="last_nameId">
-    
+
             <Form.Label>Last name</Form.Label>
             <Form.Control
             isInvalid={this.props.createUser.last_nameErr}
@@ -172,28 +172,28 @@ render(){
             onChange={this.onChange}
             required
             />
-            {this.state.errors.last_name.length > 0  && 
+            {this.state.errors.last_name.length > 0  &&
             <span className = "error">{this.state.errors.last_name}</span>
             }
-              
+
           </Form.Group>
-            
+
         </Form>
         <button type="button" className="btn1" onClick={this.onSignupClick}>
-          
+
           Sign up
-            
+
         </button>
         <p className="mt-2">
-            
-          Already have account? <Link className="link" to="">Login</Link>
-      
+
+          Already have account? <Link className="link" to="/login">Login</Link>
+
         </p>
-    
+
       </div>
-      
+
     </div>
-    
+
   </div>
   )};
 }

@@ -10,3 +10,8 @@
   color: rgb(131, 125, 125);
   margin: 4px;
 }
+
+#unfollow-follow{
+  border-radius: 20px;
+  background-color: #33B0AD;
+}

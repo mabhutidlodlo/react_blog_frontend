@@ -43,7 +43,7 @@ export default class CreatePost extends Component{
 
   componentDidMount() {
 
-    //registers summernote 
+    //registers summernote
     $('.summernote').summernote()
     //if im editing a article then i fetch data
     if(this.props.match.params.slug){
@@ -55,7 +55,7 @@ export default class CreatePost extends Component{
 
   //gets and set the values of the article you want to edit
   getData = ()=>{
-    const slug = this.props.match.params.slug 
+    const slug = this.props.match.params.slug
     axios.get(`/blog/my_article/${slug}`,).
     then(response=>{
       this.setState({pic:response.data.pic});
@@ -74,13 +74,13 @@ export default class CreatePost extends Component{
 
   //reads inn the values you fill in
   onChange =(e)=>{
-    
+
     const{name,value}= e.target
     this.setState({[name]:value})
   }
   //the image its a file is handled seperately
   handleImageChange = (e) => {
-    
+
     this.setState({
 
       [e.target.name]: e.target.files[0],
@@ -134,7 +134,7 @@ export default class CreatePost extends Component{
       }
     this.setState(errors)
     Object.values(errors).forEach(
-      
+
       val=> val.length > 0 && (valid = false)
     )
     return valid
@@ -145,7 +145,7 @@ export default class CreatePost extends Component{
 
     if (this.validateForm()){
 
-      const slug = this.props.match.params.slug 
+      const slug = this.props.match.params.slug
       let form_data = new FormData();
       form_data.append('pic', this.state.pic);
       form_data.append('title', this.state.title);
@@ -153,16 +153,16 @@ export default class CreatePost extends Component{
       form_data.append('pic_name', this.state.pic_name);
       form_data.append('hint', this.state.hint);
       form_data.append('content',$('.summernote').summernote('code') );
-  
-      slug ? 
+
+      slug ?
       axios.put(`/blog/my_article/${slug}`,form_data, { headers: {
         'content-type': 'multipart/form-data'
       }}).
-  
+
       then(response=>{
         toast.success(response)
         this.props.history.push('/dashboard')
-  
+
       }).
       catch(error=>{
         toastOnError(error)
@@ -171,7 +171,7 @@ export default class CreatePost extends Component{
       axios.post("/blog/myPost",form_data, { headers: {
         'content-type': 'multipart/form-data'
       }}).
-  
+
       then(response=>{
         toast.success(response)
         this.props.history.push('/dashboard')
@@ -195,11 +195,12 @@ export default class CreatePost extends Component{
   render(){
 
   return (
-    <div className="container ">
-      
+    <div className="container pb-2 shadow ">
+
       <h3 className="mt-2">{this.setHeading()}</h3>
       <div>
-      <MDBInput label="title"
+      <MDBInput
+        label="title"
         name="title"
         icon="pencil-alt"
         rows = '2'
@@ -207,12 +208,13 @@ export default class CreatePost extends Component{
         onChange ={this.onChange}
         value = {this.state.title}
       />
-      {this.state.errors.title >0 && 
+      {this.state.errors.title >0 &&
         <span className>{this.state.error.title}</span>
-        }    
+        }
     </div>
 
-    <MDBInput label="excerpt"
+    <MDBInput
+        label="excerpt"
         name = "hint"
         icon="pencil-alt"
         rows = '2'
@@ -220,13 +222,13 @@ export default class CreatePost extends Component{
         value = {this.state.hint}
         onChange={this.onChange}
       />
-      {this.state.errors.hint >0 && 
+      {this.state.errors.hint >0 &&
         <span className = "error">{this.state.error.hint}</span>
       }
 
       <div className="mb-2 mt-2">
 
-        <select name="category" onChange={this.onChange}>
+        <select className="text-muted" name="category" onChange={this.onChange}>
 
           <option>category</option>
           <option>culture</option>
@@ -239,34 +241,34 @@ export default class CreatePost extends Component{
           <option>world</option>
 
         </select>
-        {this.state.errors.category >0 && 
+        {this.state.errors.category >0 &&
         <span className="error">{this.state.errors.category}</span>
         }
       </div>
 
       <div class="summernote">article!</div>
-      {this.state.errors.content >0 && 
+      {this.state.errors.content >0 &&
         <span className="error">{this.state.errors.content}</span>
         }
 
       <div style={styles} className = "mt-2">
-        <label className="custom-file-upload">
+        <label className="text-muted custom-file-upload">
           <input name="pic" type="file" onChange={this.handleImageChange} />
-          <i class="fas fa-upload"/>Thumbnail*
+          <i className=" text-muted fas fa-upload"/>Thumbnail*
         </label>
         <div className="file-preview" >{this.state.pic_name}</div>
-        {this.state.errors.pic >0 && 
+        {this.state.errors.pic >0 &&
         <span className= "error">{this.state.errors.pic}</span>
         }
       </div>
 
       <div className= "d-flex justify-content-center">
-      <button type ="button" className = "btn1  pd-2" 
+      <button type ="button" className = "btn1  pd-2"
        onClick={this.onPostClick}
       >
         create
       </button>
       </div>
     </div>
-  )}  
+  )}
 }

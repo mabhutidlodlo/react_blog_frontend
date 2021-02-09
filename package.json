@@ -23,6 +23,7 @@
     "react-scripts": "4.0.1",
     "react-summernote": "^2.0.2",
     "react-toastify": "^6.2.0",
+    "react-websocket": "^2.1.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "summernote": "^0.8.18",
@@ -55,5 +56,6 @@
   "devDependencies": {
     "node-sass": "^4.14.1",
     "sass": "^1.32.2"
-  }
+  },
+  "homepage": "."
 }

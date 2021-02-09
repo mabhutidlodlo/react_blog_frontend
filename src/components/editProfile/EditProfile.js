@@ -43,7 +43,7 @@ export default class EditProfile extends Component {
     form_data.append('about',this.state.about);
 
     if (this.state.profile.username === this.state.username){
-      
+
     }
     else{
    const data = {
@@ -94,12 +94,12 @@ export default class EditProfile extends Component {
       <div className = "mt-5 border ">
         <div className="d-flex justify-content-center">
           <label className="mt-2">
-            <input 
+            <input
             name="image_file"
             style = {{dispalay:'none'}}
-            type = "file" 
+            type = "file"
             onChange={this.handleFileInput}/>
-            <img 
+            <img
             src={this.state.picture_url ? this.state.picture_url : "https://iivent.herokuapp.com"+this.state.image_file}  
             style={{width: 200, height: 200, borderRadius: 200/ 2}}
              alt="user pic"
@@ -108,7 +108,7 @@ export default class EditProfile extends Component {
         </div>
         <div className="description">
         <div>
-        <MDBInput 
+        <MDBInput
           label="username"
           icon="pencil-alt"
           name = "username"

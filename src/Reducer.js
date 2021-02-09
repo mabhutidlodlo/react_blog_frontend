@@ -7,7 +7,7 @@ const createRootReducer = history =>
   combineReducers({
     router: connectRouter(history),
     createUser: signupReducer, // <--- add it here
-    auth:loginReducer
+    auth: loginReducer
   });
 
 export default createRootReducer;

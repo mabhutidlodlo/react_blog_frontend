@@ -9,13 +9,14 @@ import Category from "./components/category/Category";
 import FullArticle from "./components/articleview/FullArticle";
 import Profile from "./components/profileView/Profile";
 import EditProfile from  "./components/editProfile/EditProfile";
+import SubscribedArticles from "./components/listArticles/SubscribedArticles"
 import requireAuth from "./utils/RequireAuth";
 import Layout from "./hocs/Layout"
-import Root from "./Root"; 
+import Root from "./Root";
 import { ToastContainer } from "react-toastify";
 import axios from "axios";
-import '@fortawesome/fontawesome-free/css/all.min.css'; 
-axios.defaults.baseURL = "https://iivent.herokuapp.com";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+axios.defaults.baseURL = "https://iivent.herokuapp.com/";
 
 
 class App extends Component {
@@ -25,25 +26,30 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Root>
+
+      <BrowserRouter>
+        <Root >
           <Switch>
           <Route path="/signup" component={Signup} />
-          <Route path="" component={Login} />
+          <Route path="/login" component={Login} />
+
           <Layout>
-             <Switch>
-              <Route path="/create_post/:slug?" component={CreatePost} />
+            <Switch>
+             <Route path="/dashboard" component={requireAuth(Dashboard)} />
+              <Route path="/create_post/:slug?" component={requireAuth(CreatePost)} />
               <Route path="/home" component={HomePage} />
-              <Route path="/edit_profile" component={EditProfile} />
-              <Route path="/dashboard" component={Dashboard} />
+              <Route path="/edit_profile" component={requireAuth(EditProfile)} />
               <Route path='/category/:id' component={Category}/>
-              <Route path='/article/:slug' 
+              <Route path='/subscribed' component={requireAuth(SubscribedArticles)}/>
+              <Route path='/article/:slug'
               component={requireAuth(FullArticle)}/>
-              <Route path='/profile/:id' component={Profile}/>
+              <Route path='/profile/:id' component={requireAuth(Profile)}/>
               <Route path="*">Ups</Route>
-          </Switch>
+              </Switch>
           </Layout>
           </Switch>
         </Root>
+        </BrowserRouter>
         <ToastContainer hideProgressBar={true} newestOnTop={true} />
       </div>
     );

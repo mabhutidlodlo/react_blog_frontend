@@ -20,7 +20,7 @@ const Category = (props)=>{
   return(
     <div className = 'container'>
       <ListCategories/>
-       <div className = "text-muted mb-2">Category/{props.match.params.id}</div>
+       <div className = "m-3 text-muted mb-2">Category/{props.match.params.id}</div>
       <ListArticle cat = "cat" articles ={articles}/>
     </div>
   )

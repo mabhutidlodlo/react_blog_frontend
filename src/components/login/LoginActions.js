@@ -14,6 +14,7 @@ export const login  =  (userData, redirectTo)=> dispatch=>{
        dispatch(setToken(auth_token))
        const profile = response.data.profile
        localStorage.setItem("profile", JSON.stringify(profile))
+       localStorage.setItem("token", JSON.stringify(auth_token))
        const user = response.data.user
        dispatch(setCurrentUser(user, redirectTo))
 
@@ -32,6 +33,20 @@ dispatch({
     payload:token
 })
 };
+
+export const logout = ()=>dispatch=>{
+  axios
+    .post("/accounts/logout")
+    .then(response => {
+      dispatch(unsetCurrentUser());
+      dispatch(push("/home"));
+      toast.success("Logout successful.");
+    }).
+    catch(e=>{
+      toastOnError(e)
+    })
+
+}
 
 export const setCurrentUser = (user,redirectTo)=>dispatch=>{
     localStorage.setItem("user", JSON.stringify(user))

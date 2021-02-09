@@ -5,9 +5,9 @@
     font-family: "Open Sans", sans-serif;
 }
 h3{
-    color:#33B0AD;
+    color:grey;
 }
-.inner.container{
+.inner.contain{
     width: max-content;
     height: 40em;
     min-height: 44em;

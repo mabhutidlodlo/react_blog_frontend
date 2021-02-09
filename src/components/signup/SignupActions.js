@@ -17,6 +17,7 @@ export const signupNewUser = userData => dispatch=>{
         " created succesfully, login"
         );
         dispatch({type: CREATE_USER_SUCCESS})
+        this.props.push('/login')
     })
     .catch(error => {
         if(error.response){

@@ -16,7 +16,7 @@ export default function requireAuth(Component){
         checkAuth() {
             if (!this.props.isAuthenticated) {
               const redirectAfterLogin = this.props.location.pathname;
-              this.props.dispatch(push(`?next=${redirectAfterLogin}`));
+              this.props.dispatch(push(`/login?next=${redirectAfterLogin}`));
             }
           }
           render() {
@@ -42,6 +42,6 @@ export default function requireAuth(Component){
           token: state.auth.token
         };
       };
-    
+
       return connect(mapStateToProps)(AuthenticatedComponent);
 }

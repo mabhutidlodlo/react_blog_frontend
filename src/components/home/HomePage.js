@@ -8,8 +8,10 @@ import {login} from "../login/LoginActions"
 import { Container, Navbar, Nav } from "react-bootstrap";
 import ListArticle from "../listArticles/ListArticle";
 import ListCategories from "../listCategories/ListCategories"
+import '../css/subscribed.css'
 
 class HomePage extends Component {
+
   constructor (props){
     super(props);
     this.state = {
@@ -25,21 +27,24 @@ class HomePage extends Component {
   fetchData = ()=>{
     axios.get('/blog/',)
     .then(response=>{
-     this.setState({articles:response.data})    
+     this.setState({articles:response.data})
     })
   }
 
+  handleClick= ()=>{
+    this.props.history.push('/subscribed')
+  }
 render() {
   const secondColumnStart = Math.floor(this.state.articles.length / 2);
   return(
-    <Container >
+    <Container className="shadow">
       <ListCategories></ListCategories>
-      <div className="d-flex">
-      <h3 className = "ml-5">Recent posts:</h3>
-      </div>
-      <ListArticle articles ={this.state.articles}/>
+        <div className="m-3 d-flex ">
+          <h3 className="recent_articles ml-2">Recent</h3>
+          <button className="ml-5" type = 'button' id="subscribed_button" onClick ={this.handleClick}>Subscribed</button>
+        </div>
+      <ListArticle  articles ={this.state.articles}/>
     </Container>
   );}
 }
 export default HomePage
-
