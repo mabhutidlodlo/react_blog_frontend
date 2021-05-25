@@ -95,7 +95,7 @@ const handleProfileClick = (id)=>{
         </div>
 
         <div className="row">
-          <img width= "1200" height = "300" src ={"https://iivent.herokuapp.com"+article.pic}></img>
+          <img width= "1200" height = "300" src ={article.pic}></img>
         </div>
 
         <div className="">

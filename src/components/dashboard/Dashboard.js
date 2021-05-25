@@ -104,7 +104,7 @@ export default function Dashboard(props){
 
               <div className="div" onClick = {e=>handleImageClick(article.slug)}>
 
-                <img width= "100%" height = "200" src = {"https://iivent.herokuapp.com"+article.pic}></img>
+                <img width= "100%" height = "200" src = {article.pic}></img>
 
               </div>
               <h3 className="ml-2"> {article.title}</h3>

@@ -100,7 +100,7 @@ export default class EditProfile extends Component {
             type = "file"
             onChange={this.handleFileInput}/>
             <img
-            src={this.state.picture_url ? this.state.picture_url : "https://iivent.herokuapp.com"+this.state.image_file}  
+            src={this.state.picture_url ? this.state.picture_url : this.state.image_file}  
             style={{width: 200, height: 200, borderRadius: 200/ 2}}
              alt="user pic"
           />

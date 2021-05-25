@@ -51,22 +51,7 @@ const NavBar = (props)=>{
     <Navbar bg="dark" variant="dark">
       <Navbar.Brand href="/">!vent</Navbar.Brand>
       <Navbar.Toggle />
-      <NavDropdown eventKey='3'
-        title={
-       <img
-        src={github}
-        style={{width: 30, height: 30, borderRadius: 30/ 2}}
-         alt="github pic"
-      />}
-      className="mr-3" id="basic-nav-dropdown">
-        <NavDropdown.Item href="https://github.com/mabhutidlodlo/react_blog_frontend">
-          FrontEnd
-        </NavDropdown.Item>
-        <NavDropdown.Divider />
-        <NavDropdown.Item  href="https://github.com/mabhutidlodlo/ivent">
-          Backend
-        </NavDropdown.Item>
-      </NavDropdown>
+
       { props.isAuthenticated ?
       <Navbar.Collapse className="justify-content-end">
 
@@ -91,7 +76,7 @@ const NavBar = (props)=>{
            <NavLink to="/home" style = {{color:'#33B0AD'}}>Home</NavLink>
           </div>
          }
-         <Websocket url={'ws://iivent.herokuapp.com/ws/notify/'+JSON.parse(localStorage.getItem('profile')).id+'/'+JSON.parse(localStorage.getItem('token'))+'/'}
+         <Websocket url={'wss://iivent.herokuapp.com/ws/notify/'+JSON.parse(localStorage.getItem('profile')).id+'/'+JSON.parse(localStorage.getItem('token'))+'/'}
              onOpen={e=>handleData(e)}
              onMessage = {e=>handleData(e)}
              />
@@ -99,7 +84,7 @@ const NavBar = (props)=>{
           <NavDropdown eventKey='3'
             title={
            <img
-            src={"https://iivent.herokuapp.com"+user.avatar}
+            src={user.avatar}
             style={{width: 30, height: 30, borderRadius: 30/ 2}}
              alt="user pic"
           />}
